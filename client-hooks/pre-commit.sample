@@ -4,7 +4,7 @@ files=$(git diff-index --cached --name-only HEAD)
 
 for file in $files
 do
-    if [[ $file =~ ^[[:alnum:]]+\.php$ ]] ; then
+    if [[ $file =~ \.php$ ]] ; then
         err=$(php -l $dir$file 2>&1 | grep 'Parse error')
         if [ "$err" != '' ]; then
             echo "Syntax errors found in file: $dir$file, fix it!"
